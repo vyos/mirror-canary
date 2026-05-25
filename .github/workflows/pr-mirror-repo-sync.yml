@@ -1,0 +1,30 @@
+# .github/workflows/pr-mirror-repo-sync.yml — CANARY WRAPPER
+# DO NOT EDIT — managed by mirror-pipeline Rollout 1a.
+# Pinned to vyos/.github@feature/rollout-1-app-tokens for canary verification.
+# Rollout 1b Task 7 Step 9 will (1) merge the feature branch to @current
+# and (2) update this wrapper's pin to @current. Or this entire repo will
+# be deleted after Rollout 1a passes.
+name: PR Mirror and Repo Sync
+
+on:
+  pull_request_target:
+    types: [closed]
+    branches: [current]
+  workflow_dispatch:
+    inputs:
+      sync_branch:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  call:
+    if: |
+      github.repository_owner == 'vyos'
+      && (github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch')
+    uses: vyos/.github/.github/workflows/pr-mirror-repo-sync.yml@feature/rollout-1-app-tokens
+    with:
+      sync_branch: ${{ inputs.sync_branch || github.event.pull_request.base.ref }}
+    secrets: inherit
