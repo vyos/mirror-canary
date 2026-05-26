@@ -1,0 +1,4 @@
+# .mergify.yml — Rollout 1a canary
+# Inherits the org-level central Mergify configuration via extends:.
+# Same shape as production consumer repos in the vyos org.
+extends: mergify
