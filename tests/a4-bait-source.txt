@@ -1,0 +1,1 @@
+A.4 Mergify activation check (source) — close without merge
