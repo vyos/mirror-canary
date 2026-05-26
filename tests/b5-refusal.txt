@@ -1,0 +1,1 @@
+B.5 refusal test — should fail because PR #12 above doesn't have mirror-completed
