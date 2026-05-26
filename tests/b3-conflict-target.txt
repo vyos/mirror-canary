@@ -1,1 +1,1 @@
-rolling-version content — DIFFERENT from sagitta — backport will conflict
+B.7 rolling-version content — DIFFERENT from sagitta's b3-conflict-target — backport will conflict, AND ruleset blocks merge
