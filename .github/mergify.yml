@@ -1,9 +1,22 @@
 # yaml-language-server: $schema=https://docs.mergify.com/configuration/file-format/
 # Mergify configuration for vyos/mirror-canary (Rollout 1a canary).
 # Inherits the central baseline from vyos/mergify:.mergify.yml via extends:.
-# Matches the production-consumer convention at .github/mergify.yml (the root
-# .mergify.yml path is documented but not picked up by Mergify on this org's
-# repos — empirically verified during 1a expansion).
+# Adds an explicit local pull_request_rule so Mergify registers the repo
+# (the central-extends-only form did not activate Mergify processing —
+# empirically caught during 1a expansion plan A.4.3).
+
 extends: mergify
+
 merge_protections_settings:
   reporting_method: check-runs
+
+pull_request_rules:
+  - name: canary heartbeat — confirm Mergify is active
+    conditions:
+      - base = rolling
+      - "-closed"
+      - label = mergify-heartbeat
+    actions:
+      comment:
+        message: |
+          Mergify is alive on this canary (rule matched on `mergify-heartbeat` label).
