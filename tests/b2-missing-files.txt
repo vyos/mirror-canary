@@ -1,0 +1,9 @@
+B.2 test — Missing-files-on-destination class
+
+This file is added by source PR on rolling.
+After mirror algorithm runs, this file MUST exist on target rolling
+with non-zero size.
+
+Historical failure class: target ended up without files that source PR
+added. The new App-token algorithm + composite-action design should
+preserve file additions cleanly.
