@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://docs.mergify.com/configuration/file-format/
+# Mergify configuration for vyos/mirror-canary (Rollout 1a canary).
+# Inherits the central baseline from vyos/mergify:.mergify.yml via extends:.
+# Matches the production-consumer convention at .github/mergify.yml (the root
+# .mergify.yml path is documented but not picked up by Mergify on this org's
+# repos — empirically verified during 1a expansion).
+extends: mergify
+merge_protections_settings:
+  reporting_method: check-runs
