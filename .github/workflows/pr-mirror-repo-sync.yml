@@ -1,10 +1,11 @@
 # .github/workflows/pr-mirror-repo-sync.yml — CANARY WRAPPER
 # DO NOT EDIT — managed by mirror-pipeline rollouts.
-# Pinned to vyos/.github@feature/rollout-2-inclusion for Rollout 2 canary
-# verification (T8943). After Rollout 2 canary passes, Plan Task 3 Step 8
-# restores this pin to @production. Original snapshot preserved at
-# /tmp/rollout-2/canary-wrapper-original.yml; emergency restore script at
-# /tmp/rollout-2/canary-emergency-restore.sh.
+# Steady-state pinned to vyos/.github@production. Temporarily repointed
+# during mirror-pipeline canary-verification windows (rollouts 1a/1b/2,
+# and any future rollout that needs a canary). After each canary passes,
+# the pin is restored to @production. See ~/.claude/plans/2026-05-17-mirror-
+# pipeline-rollout-2-inclusion-mechanism.md Task 3 Step 8 for the
+# canonical restore procedure.
 name: PR Mirror and Repo Sync
 
 on:
@@ -27,7 +28,7 @@ jobs:
     if: |
       github.repository_owner == 'vyos'
       && (github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch')
-    uses: vyos/.github/.github/workflows/pr-mirror-repo-sync.yml@feature/rollout-2-inclusion
+    uses: vyos/.github/.github/workflows/pr-mirror-repo-sync.yml@production
     with:
       sync_branch: ${{ inputs.sync_branch || github.event.pull_request.base.ref }}
     secrets: inherit
