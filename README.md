@@ -4,3 +4,4 @@ Canary repo for the mirror pipeline Rollout 1a — App-token end-to-end test tar
 # B.1 — Mergify coupling test (App-as-commenter)
 # Rollout 2 canary verify 2026-05-30T19:03:12Z
 # Rollout 2 kill-switch 2026-05-30T19:08:26Z
+# Post-skip test 2026-05-30T19:10:49Z
