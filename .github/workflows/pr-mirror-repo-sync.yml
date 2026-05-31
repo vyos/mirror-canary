@@ -28,7 +28,7 @@ jobs:
     if: |
       github.repository_owner == 'vyos'
       && (github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch')
-    uses: vyos/.github/.github/workflows/pr-mirror-repo-sync.yml@feature/rollout-2-reconcile
+    uses: vyos/.github/.github/workflows/pr-mirror-repo-sync.yml@production
     with:
       sync_branch: ${{ inputs.sync_branch || github.event.pull_request.base.ref }}
     secrets: inherit
